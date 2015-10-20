@@ -208,6 +208,28 @@ Dota2.Dota2Client.prototype.practiceLobbyKick = function(account_id, callback){
                 }
   );
 };
+
+Dota2.Dota2Client.prototype.practiceLobbyKickFromTeam = function (account_id) {
+
+    if (!this._gcReady) {
+        if (this.debug) util.log("GC not ready, please listen for the 'ready' event.");
+        return null;
+    }
+
+    if (this.debug) {
+        util.log("Sending match CMsgPracticeLobbyKickFromTeam request");
+    }
+
+    var payload = new Dota2.schema.CMsgPracticeLobbyKickFromTeam({
+        account_id: account_id
+    });
+
+    this._protoBufHeader.msg = Dota2.schema.EDOTAGCMsg.k_EMsgGCPracticeLobbyKickFromTeam;
+    this._gc.send(this._protoBufHeader, payload.toBuffer(), (header, body) => {
+        onPracticeLobbyResponse.call(this, body, null);
+    });
+};
+
 // callback to onPracticeLobbyJoinResponse
 Dota2.Dota2Client.prototype.joinPracticeLobby = function(id, password, callback){
   callback = callback || null;

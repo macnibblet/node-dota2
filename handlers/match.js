@@ -105,7 +105,6 @@ Dota2.Dota2Client.prototype.requestMatchmakingStats = function() {
 
 };
 
-
 // Handlers
 
 var handlers = Dota2.Dota2Client.prototype._handlers;
