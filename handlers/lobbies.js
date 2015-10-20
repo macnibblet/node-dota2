@@ -156,7 +156,7 @@ Dota2.Dota2Client.prototype.setLobbyTeamSlot = function(team, slot, callback){
   var payload = Dota2.schema.CMsgFlipLobbyTeams.serialize({});
 
   this._gc.send({
-          "msg":    Dota2.schema.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams, 
+          "msg":    Dota2.schema.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams,
           "proto":  {
             "client_steam_id": this._client.steamID,
             "source_app_id":  this._appid
@@ -277,6 +277,28 @@ Dota2.Dota2Client.prototype.launchPracticeLobby = function(callback) {
                 }
   );
 };
+
+Dota2.Dota2Client.prototype.setToSpectator = function() {
+
+  if (!this._gcReady) {
+    if (this.debug) util.log("GC not ready, please listen for the 'ready' event.");
+    return null;
+  }
+
+  if (this.debug) util.log("Sending match CMsgPracticeLobbySetTeamSlot request");
+
+  var payload = new Dota2.schema.CMsgPracticeLobbySetTeamSlot({
+    team: 4,
+    slot: 1
+  });
+
+  this._protoBufHeader.msg = Dota2.schema.EDOTAGCMsg.k_EMsgGCPracticeLobbySetTeamSlot;
+  this._gc.send(this._protoBufHeader, payload.toBuffer(), (header, body) => {
+    util.log('SetToSpectator response');
+
+    onPracticeLobbyResponse.call(this, body, null);
+  });
+}
 
 
 // Handlers
