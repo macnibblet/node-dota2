@@ -105,6 +105,27 @@ Dota2.Dota2Client.prototype.requestMatchmakingStats = function() {
 
 };
 
+Dota2.Dota2Client.prototype.abandonCurrentGame = function() {
+
+  if (!this._gcReady) {
+    if (this.debug) util.log("GC not ready, please listen for the 'ready' event.");
+    return null;
+  }
+
+  if (this.debug) {
+    util.log("Sending abandon game request");
+  }
+
+  var payload = new Dota2.schema.CMsgAbandonCurrentGame({});
+
+  this._protoBufHeader.msg = Dota2.schema.k_EMsgGCAbandonCurrentGame;
+  this._gc.send(this._protoBufHeader, payload.toBuffer(), (header, body) => {
+    util.log('Response from abandom game');
+    util.log(header);
+    util.log(body);
+  });
+};
+
 // Handlers
 
 var handlers = Dota2.Dota2Client.prototype._handlers;
