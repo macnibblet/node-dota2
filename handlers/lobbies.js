@@ -320,7 +320,32 @@ Dota2.Dota2Client.prototype.setToSpectator = function() {
 
     onPracticeLobbyResponse.call(this, body, null);
   });
-}
+};
+
+Dota2.Dota2Client.prototype.inviteToLobby = function(members) {
+
+  if (!this._gcReady) {
+    if (this.debug) util.log("GC not ready, please listen for the 'ready' event.");
+    return null;
+  }
+
+  if (this.debug) {
+    util.log("Sending inviteToLobby request");
+  }
+
+  members.forEach((member) => {
+    var payload = new Dota2.schema.CMsgInviteToLobby({
+      steam_id: member
+    });
+
+    this._protoBufHeader.msg = Dota2.schema.EGCBaseMsg.k_EMsgGCInviteToLobby;
+    this._gc.send(this._protoBufHeader, payload.toBuffer(), (header, body) => {
+      util.log('inviteToLobby response');
+      util.log(header);
+      util.log(body);
+    });
+  });
+};
 
 
 // Handlers
