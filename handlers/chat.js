@@ -140,7 +140,10 @@ var onOtherLeftChannel = function onOtherLeftChannel(message) {
   // Delete member from cached chatChannel
   // channel_id is a uint64 which is a compound object. Using '===' or '==' doesn't work to check the equality necessitating the cast to String
   var chatChannel = this.chatChannels.filter(function (item) {return (""+item.channel_id === ""+otherLeft.channel_id); })[0];
-  chatChannel.members = chatChannel.members.filter(function (item) {return (""+item.steam_id !== ""+otherLeft.steam_id); });
+
+  if (chatChannel) {
+    chatChannel.members = chatChannel.members.filter(function (item) {return (""+item.steam_id !== ""+otherLeft.steam_id); });
+  }
 };
 handlers[Dota2.schema.EDOTAGCMsg.k_EMsgGCOtherLeftChannel] = onOtherLeftChannel;
 
