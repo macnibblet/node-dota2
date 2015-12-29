@@ -3,9 +3,6 @@
 // Definitions by: Andrey Kurdyumov <https://github.com/kant2002>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-/// <reference path="../node/node.d.ts" />
-
-
 declare module "steam" {
   import {EventEmitter} from 'events';
   var servers:SteamServer[];
