@@ -1,6 +1,41 @@
 {
-  "name": "dota2",
-  "version": "1.0.0-dev",
+  "_args": [
+    [
+      "is-dota2-client@1.0.0-dev",
+      "/Users/antoine/Sites/epulze/athena"
+    ]
+  ],
+  "_from": "is-dota2-client@1.0.0-dev",
+  "_id": "is-dota2-client@1.0.0-dev",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/is-dota2-client",
+  "_nodeVersion": "4.2.1",
+  "_npmUser": {
+    "email": "antoine.hedgecock@gmail.com",
+    "name": "mac_nibblet"
+  },
+  "_npmVersion": "3.3.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "is-dota2-client",
+    "raw": "is-dota2-client@1.0.0-dev",
+    "rawSpec": "1.0.0-dev",
+    "scope": null,
+    "spec": "1.0.0-dev",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/is-dota2-client/-/is-dota2-client-1.0.0-dev.tgz",
+  "_shasum": "a25bce28f93c27a0a42a1dc52936f56313e7d141",
+  "_shrinkwrap": null,
+  "_spec": "is-dota2-client@1.0.0-dev",
+  "_where": "/Users/antoine/Sites/epulze/athena",
+  "bugs": {
+    "url": "https://github.com/macnibblet/node-dota2/issues"
+  },
   "dependencies": {
     "bignumber.js": "2.0.7",
     "deferred": "^0.7.2",
@@ -8,20 +43,40 @@
     "protobufjs": "^4.0.0",
     "steam": "^1.0.0"
   },
+  "description": "A node-steam plugin for Dota 2.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "a25bce28f93c27a0a42a1dc52936f56313e7d141",
+    "tarball": "http://registry.npmjs.org/is-dota2-client/-/is-dota2-client-1.0.0-dev.tgz"
+  },
+  "gitHead": "aa79bc881b77047613bd4755f42ce9d6c20b0dbc",
+  "homepage": "https://github.com/macnibblet/node-dota2#readme",
+  "keywords": [
+    "dota",
+    "steam",
+    "valve"
+  ],
+  "typescript": {
+    "definition": "steam.d.ts"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "mac_nibblet",
+      "email": "antoine.hedgecock@gmail.com"
+    }
+  ],
+  "name": "is-dota2-client",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/macnibblet/node-dota2.git"
+  },
   "scripts": {
     "update": "bash update_proto.sh"
   },
-  "readmeFilename": "README.md",
-  "description": "A node-steam plugin for Dota 2.",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/RJacksonm1/node-dota2.git"
-  },
-  "keywords": [
-    "steam",
-    "valve",
-    "dota"
-  ],
-  "license": "MIT"
+  "version": "1.0.0-dev"
 }
